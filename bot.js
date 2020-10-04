@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+const Keyv = require('keyv');
 const bot = new Discord.Client();
 const config = require("./config.json");
 const auth = require("./auth.json");
+const keyv = new Keyv('mysql://PopaBot:zwvgbWb0uVB082oS@sql.zachfr.com:3306/PopaBot');
 console.log("Template loading")
 console.log(config)
 
@@ -10,6 +12,7 @@ bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
 bot.login(auth.token);
+keyv.on('error', err => console.error('Keyv connection error:', err));
 
 
 fs.readdir("./commands/", (err, files) => {
@@ -34,7 +37,8 @@ fs.readdir("./commands/", (err, files) => {
 
 bot.on("ready", async () => {
     console.log("Popa start");
-    //bot.user.setActivity("with Template");
+    const status = await keyv.get('status');
+    bot.user.setActivity(status);
 });
 bot.on("message", async message => {
     if (message.author.bot) return;
