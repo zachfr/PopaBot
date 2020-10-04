@@ -7,4 +7,4 @@ module.exports.run = async (bot, message, args) => {
 module.exports.help = {
     name: "hey"
 }
-module.exports.aliases = ["hi", "salut", "allo"]
+module.exports.aliases = ["hi", "salut", "allo", "yo"]
