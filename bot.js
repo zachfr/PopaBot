@@ -5,7 +5,7 @@ const bot = new Discord.Client();
 const config = require("./config.json");
 const auth = require("./auth.json");
 const keyv = new Keyv('mysql://PopaBot:zwvgbWb0uVB082oS@sql.zachfr.com:3306/PopaBot');
-console.log("Template loading")
+console.log("Popa loading")
 console.log(config)
 
 bot.commands = new Discord.Collection();
