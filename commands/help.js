@@ -1,10 +1,15 @@
 const Discord = require("discord.js");
 const auth = require("../auth.json");
+const config = require("../config.json");
 const Keyv = require('keyv');
 const keyv = new Keyv(auth.mysql);
 
 module.exports.run = async (bot, message, args) => {
-    var prefix = (await keyv.get(`Prefix.${message.guild.id}`));
+    if (await keyv.get(`Prefix.${message.guild.id}`)) {
+        var prefix = (await keyv.get(`Prefix.${message.guild.id}`));
+    }else {
+        var prefix = config.prefix;
+    }
     const data = [];
     const { commands } = message.client;
 
