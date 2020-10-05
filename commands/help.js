@@ -1,7 +1,9 @@
 const Discord = require("discord.js");
-prefix = "!";
+const Keyv = require('keyv');
+const keyv = new Keyv('mysql://PopaBot:zwvgbWb0uVB082oS@sql.zachfr.com:3306/PopaBot');
 
 module.exports.run = async (bot, message, args) => {
+    var prefix = (await keyv.get(`Prefix.${message.guild.id}`));
     const data = [];
     const { commands } = message.client;
 
@@ -16,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
     const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
     if (!command) {
-	    return message.reply('that\'s not a valid command!');
+	    return message.reply('That\'s not a valid command!');
     }
 
     data.push(`**Name:** ${command.help.name}`);
