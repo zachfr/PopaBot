@@ -5,7 +5,7 @@ const prefix = new Keyv(auth.mysql);
 
 module.exports.run = async (bot, message, args) => {
     if (message.member.hasPermission('ADMINISTRATOR')) {
-        if (args.length == 0) return message.channel.send("Wrong usagee: `!setprefix <Prefix>`");
+        if (args.length == 0) return message.channel.send("Wrong usage: `!setprefix <Prefix>`");
         const Prefix = args[0];
         console.log(Prefix);
         await prefix.set(`Prefix.${message.guild.id}`, args[0]);
