@@ -43,7 +43,11 @@ bot.on("ready", async () => {
 bot.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === 'dm') return;
-    let prefix = config.prefix;
+    if (await keyv.get(`Prefix.${message.guild.id}`)) {
+        var prefix = (await keyv.get(`Prefix.${message.guild.id}`));
+    }else {
+        var prefix = config.prefix;
+    }
     
     if(!message.content.startsWith(prefix)) return;
 
