@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
+const auth = require("../auth.json");
 const Keyv = require('keyv');
-const keyv = new Keyv('mysql://PopaBot:zwvgbWb0uVB082oS@sql.zachfr.com:3306/PopaBot');
+const keyv = new Keyv(auth.mysql);
 
 module.exports.run = async (bot, message, args) => {
     var prefix = (await keyv.get(`Prefix.${message.guild.id}`));

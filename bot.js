@@ -4,7 +4,7 @@ const Keyv = require('keyv');
 const bot = new Discord.Client();
 const config = require("./config.json");
 const auth = require("./auth.json");
-const keyv = new Keyv('mysql://PopaBot:zwvgbWb0uVB082oS@sql.zachfr.com:3306/PopaBot');
+const keyv = new Keyv(auth.mysql);
 console.log("Popa loading")
 console.log(config)
 

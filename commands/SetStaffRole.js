@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
+const auth = require("../auth.json");
 const Keyv = require('keyv');
-const StaffRole = new Keyv('mysql://PopaBot:zwvgbWb0uVB082oS@sql.zachfr.com:3306/PopaBot');
+const StaffRole = new Keyv(auth.mysql);
 
 module.exports.run = async (bot, message, args) => {
     if (message.member.hasPermission('ADMINISTRATOR')) {
