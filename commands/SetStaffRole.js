@@ -5,7 +5,7 @@ const StaffRole = new Keyv(auth.mysql);
 
 module.exports.run = async (bot, message, args) => {
     if (message.member.hasPermission('ADMINISTRATOR')) {
-        if (args.length == 0) return message.channel.send("Wrong usage: `!setstaffrole <RoleId>`");
+        if (args.length == 0) return message.channel.send("Wrong usagee: `!setstaffrole <RoleId>`");
         const RoleId = args[0];
         console.log(RoleId);
         console.log(message.guild.id);
