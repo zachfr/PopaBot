@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
                 message.delete();
             }, 1000)
         } 
-        if (args.length == 1) {
+        if (args.length >= 1) {
             const activity = message.content.split(" ").slice(1).join(" ");
             await status.set('status', activity);
             setTimeout( async () => {
